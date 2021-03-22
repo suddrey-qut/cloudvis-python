@@ -7,7 +7,7 @@ The following code snippet demonstrates retrieving information from a request an
 ```python
 from cloudvis import CloudVis
 
-PORT = 9999 
+PORT = 9999
 
 def callback(request, response, data):
     value0 = request.getValue('input_number0')    # No default value
@@ -26,7 +26,11 @@ def callback(request, response, data):
     response.addValue('output_number1', value1)
 
 if __name__ == '__main__':
-    cloudvis = CloudVis(PORT)
+    cloudvis = CloudVis(
+        PORT,
+        secure=True,
+        server_key_file=key_file_path
+    )
     cloudvis.run(callback)
 ```
 
@@ -44,6 +48,10 @@ def callback(request, response, data):
     response.addImage('out_img_id', gray)
 
 if __name__ == '__main__':
-    cloudvis = CloudVis(PORT)
+    cloudvis = CloudVis(
+        PORT,
+        secure=True,
+        server_key_file=key_file_path
+    )
     cloudvis.run(callback)
 ```
