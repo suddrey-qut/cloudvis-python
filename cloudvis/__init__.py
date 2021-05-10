@@ -75,6 +75,8 @@ class CloudVis:
             self.socket.setsockopt(zmq.CURVE_PUBLICKEY, client_public)
 
             self.socket.setsockopt(zmq.CURVE_SERVERKEY, server_key)
+            
+            self.socket.setsockopt(zmq.ZMQ_TCP_KEEPALIVE, 1)
 
         self.socket.connect("tcp://{0}:{1}".format(host, port))
 
